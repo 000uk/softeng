@@ -3,14 +3,19 @@
 #include "RegisterUser.h"
 #include "RegisterUserUI.h"
 
-void doTask();
+void doRegister();
+void doLogIn();
+void doLogOut();
+void doRentBike();
+void doViewBikeList();
+void doAddBikeList();
 
 int main()
 {
-	doTask();
+	doRegister();
 }
 
-void doTask() 
+void doRegister() 
 {
 	RegisterUser* regCtrl = new RegisterUser;
 }

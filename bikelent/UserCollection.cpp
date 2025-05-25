@@ -25,12 +25,12 @@ bool UserCollection::isAlreadyExist(string userID) {
 	return false;
 }
 
-bool UserCollection::verifyUserInfo(string userID, string userPW) {
+User* UserCollection::verifyUserInfo(string userID, string userPW) {
 	for (int i = 0; i < numUsers; i++) {
 		if (userID == userList[i]->getUserID() &&
-			userPW == userList[i]->getUserPW()) { // enteredID? 이런식으로 이름 바꿀까 고민
-			return true;
+			userPW == userList[i]->getUserPW()) {
+			return userList[i];
 		}
 	}
-	return false;
+	return NULL;
 }

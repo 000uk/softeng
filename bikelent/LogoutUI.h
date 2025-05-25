@@ -1,6 +1,7 @@
 #pragma once
 #include <string.h>
 #include "Logout.h"
+#include "User.h"
 
 using namespace std;
 
@@ -12,5 +13,5 @@ private:
 	Logout* ctrl;
 public:
 	void startInterface(Logout* ctrl);
-	void logout(string& currUserID);
+	void logout(User*& currUser);
 };

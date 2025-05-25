@@ -11,6 +11,6 @@ public:
 	UserCollection();
 	~UserCollection();
 	bool isAlreadyExist(string userID);
-	bool verifyUserInfo(string userID, string userPW);
+	User* verifyUserInfo(string userID, string userPW);
 	void addUser(string userID, string userPW, int phoneNum);
 };

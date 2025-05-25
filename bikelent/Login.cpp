@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include "Login.h"
 
@@ -11,9 +10,6 @@ Login::Login(LoginUI* ui, UserCollection* userCol) {
 	ui->startInterface(this);
 }
 
-bool Login::checkUserInfo(string userID, string userPW) {
-	if (userCol->verifyUserInfo(userID, userPW)) {
-		return true;
-	}
-	else return false;
+User* Login::checkUserInfo(string userID, string userPW) {
+	return userCol->verifyUserInfo(userID, userPW);
 }

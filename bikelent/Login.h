@@ -15,5 +15,5 @@ private:
 
 public:
 	Login(LoginUI* ui, UserCollection* userCol);
-	bool checkUserInfo(string userID, string userPW);
+	User* checkUserInfo(string userID, string userPW);
 };

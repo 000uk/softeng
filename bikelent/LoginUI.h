@@ -1,6 +1,7 @@
 #pragma once
 #include <string.h>
 #include "Login.h"
+#include "User.h"
 
 using namespace std;
 
@@ -12,5 +13,5 @@ private:
 	Login* ctrl;
 public:
 	void startInterface(Login* ctrl);
-	void login(string& currUserID);
+	void login(User*& currUser);
 };

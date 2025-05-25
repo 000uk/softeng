@@ -15,7 +15,7 @@ void LoginUI::login(User*& currUser) {
 
 	cin >> ID >> PW;
 
-	currUser = ctrl->checkUserInfo(ID, PW);
+	currUser = ctrl->tryLogin(ID, PW);
 	if (currUser) {
 		cout << "> " << ID << " " << PW << endl;
 	}

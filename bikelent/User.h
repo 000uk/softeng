@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "BikeCollection.h"
+#include "RentedBikeCollection.h"
 
 using namespace std;
 

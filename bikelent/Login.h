@@ -13,5 +13,5 @@ private:
 
 public:
 	Login(LoginUI* ui, UserCollection* userCol);
-	User* checkUserInfo(string userID, string userPW);
+	User* tryLogin(string userID, string userPW);
 };

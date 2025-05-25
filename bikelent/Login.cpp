@@ -10,6 +10,6 @@ Login::Login(LoginUI* ui, UserCollection* userCol) {
 	ui->startInterface(this);
 }
 
-User* Login::checkUserInfo(string userID, string userPW) {
+User* Login::tryLogin(string userID, string userPW) {
 	return userCol->verifyUserInfo(userID, userPW);
 }

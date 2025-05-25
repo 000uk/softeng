@@ -2,8 +2,6 @@
 #include <string.h>
 #include "User.h"
 
-#include "BikeCollection.h"
-
 class Member : public User
 {
 private:

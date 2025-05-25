@@ -10,7 +10,7 @@ private:
 public:
 	UserCollection();
 	~UserCollection();
-	bool isAlreadyExist(string userID);
+	bool isExist(string userID);
 	User* verifyUserInfo(string userID, string userPW);
 	void addUser(string userID, string userPW, int phoneNum);
 };

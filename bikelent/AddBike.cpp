@@ -12,7 +12,7 @@ AddBike::AddBike(AddBikeUI* ui, User* currUser) {
 }
 
 bool AddBike::addNewBike(string bikeID, string bikeName) {
-	if (!bikeCol->isAlreadyExist(bikeID)) {
+	if (!bikeCol->isExist(bikeID)) {
 		bikeCol->addBike(bikeID, bikeName);
 		return true;
 	}

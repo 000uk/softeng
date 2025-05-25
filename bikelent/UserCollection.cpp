@@ -15,10 +15,11 @@ UserCollection::~UserCollection() {
 }
 
 void UserCollection::addUser(string userID, string userPW, int phoneNum) {
-	userList[numUsers++] = new Member(userID, userPW, phoneNum);
+	Member* newMember = new Member(userID, userPW, phoneNum);
+	userList[numUsers++] = newMember;
 }
 
-bool UserCollection::isAlreadyExist(string userID) {
+bool UserCollection::isExist(string userID) {
 	for (int i = 0; i < numUsers; i++) {
 		if (userID == userList[i]->getUserID()) {
 			return true;

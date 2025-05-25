@@ -4,18 +4,16 @@
 
 using namespace std;
 
-void RegisterUserUI::startInterface(RegisterUser* controller) {
-	this->ctrl = controller;
+void RegisterUserUI::startInterface(RegisterUser* ctrl) {
+	this->ctrl = ctrl;
+	cout << "아이디 비번 폰번" << endl;
+}
 
+void RegisterUserUI::signUp() {
 	string ID, PW;
 	int pNum = 0;
 
-	cout << "아이디 비번 폰번" << endl;
 	cin >> ID >> PW >> pNum;
 
-	signUp(ID, PW, pNum);
-}
-
-void RegisterUserUI::signUp(string userID, string userPW, int phoneNum) {
-	ctrl->addNewMember(userID, userPW, phoneNum);
+	ctrl->addNewMember(ID, PW, pNum);
 }

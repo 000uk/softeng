@@ -13,10 +13,10 @@ private:
 	RegisterUserUI* ui;
 
 	// 이런거 나중에 collective class로 분해해야 할 거같음
-	User* userList;
+	User* userList = NULL;
 	int numUserList = 0;
 
 public:
-	RegisterUser();
+	RegisterUser(RegisterUserUI* ui);
 	void addNewMember(string userID, string userPW, int phoneNum);
 };

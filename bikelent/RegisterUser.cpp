@@ -5,8 +5,8 @@
 
 using namespace std;
 
-RegisterUser::RegisterUser() {
-	this->ui = new RegisterUserUI();
+RegisterUser::RegisterUser(RegisterUserUI* ui) {
+	this->ui = ui;
 	ui->startInterface(this);
 }
 
@@ -21,5 +21,5 @@ void RegisterUser::addNewMember(string userID, string userPW, int phoneNum) {
 	// 일단 이렇게 해놓고,,, collective class 따로 분리하자
 	User newUesr(userID, userPW, phoneNum);
 	numUserList++;
-	cout << userID << userPW << phoneNum << endl;
+	cout << userID << " " << userPW << " " << phoneNum << endl;
 }

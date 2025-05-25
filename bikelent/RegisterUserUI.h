@@ -11,6 +11,6 @@ class RegisterUserUI
 private:
 	RegisterUser* ctrl;
 public:
-	void startInterface(RegisterUser* controller);
-	void signUp(string userID, string userPW, int phoneNum);
+	void startInterface(RegisterUser* ctrl);
+	void signUp();
 };

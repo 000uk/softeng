@@ -11,7 +11,7 @@ private:
 	int phoneNum;
 
 public:
-	User(string userID, string userPW, int phoneNum);
+	User(string userID, string userPW, int phoneNum = 0);
 	string getUserID();
 	string getUserPW();
 };

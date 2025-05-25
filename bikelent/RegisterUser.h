@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "RegisterUserUI.h"
-#include "User.h"
+#include "UserCollection.h"
 
 using namespace std;
 
@@ -11,12 +11,9 @@ class RegisterUser
 {
 private:
 	RegisterUserUI* ui;
-
-	// 이런거 나중에 collective class로 분해해야 할 거같음
-	User* userList = NULL;
-	int numUserList = 0;
+	UserCollection* userCol;
 
 public:
-	RegisterUser(RegisterUserUI* ui);
-	void addNewMember(string userID, string userPW, int phoneNum);
+	RegisterUser(RegisterUserUI* ui, UserCollection* userCol);
+	bool addNewMember(string userID, string userPW, int phoneNum);
 };

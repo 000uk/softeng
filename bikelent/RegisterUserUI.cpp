@@ -15,5 +15,7 @@ void RegisterUserUI::signUp() {
 
 	cin >> ID >> PW >> pNum;
 
-	ctrl->addNewMember(ID, PW, pNum);
+	if (ctrl->addNewMember(ID, PW, pNum)) {
+		cout << ID << " " << PW << " " << pNum << endl;
+	}
 }

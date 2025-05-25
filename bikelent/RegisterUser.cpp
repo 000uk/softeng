@@ -1,25 +1,20 @@
 #include <iostream>
 #include <string>
 #include "RegisterUser.h"
-#include "RegisterUserUI.h"
 
 using namespace std;
 
-RegisterUser::RegisterUser(RegisterUserUI* ui) {
+RegisterUser::RegisterUser(RegisterUserUI* ui, UserCollection* userCol) {
 	this->ui = ui;
+	this->userCol = userCol;
+
 	ui->startInterface(this);
 }
 
-void RegisterUser::addNewMember(string userID, string userPW, int phoneNum) {
-	for (int i = 0; i < numUserList; i++) {
-		if (userID == userList[i].getUserInfo()) {
-			cout << "이미 가입된 사용자입니다." << endl;
-			return;
-		}
+bool RegisterUser::addNewMember(string userID, string userPW, int phoneNum) {
+	if (userCol->isNewUser(userID)) {
+		userCol->addUser(userID, userPW, phoneNum);
+		return true;
 	}
-
-	// 일단 이렇게 해놓고,,, collective class 따로 분리하자
-	User newUesr(userID, userPW, phoneNum);
-	numUserList++;
-	cout << userID << " " << userPW << " " << phoneNum << endl;
+	else return false;
 }

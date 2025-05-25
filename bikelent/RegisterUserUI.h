@@ -2,8 +2,6 @@
 #include <string.h>
 #include "RegisterUser.h"
 
-using namespace std;
-
 class RegisterUser;
 
 class RegisterUserUI

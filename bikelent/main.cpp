@@ -2,10 +2,11 @@
 #include <string.h>
 #include "RegisterUser.h"
 #include "RegisterUserUI.h"
+#include "UserCollection.h"
 
 using namespace std;
 
-void doRegister();
+void doRegister(UserCollection* userCol);
 void doLogIn();
 void doLogOut();
 void doRentBike();
@@ -14,13 +15,16 @@ void doAddBikeList();
 
 int main()
 {
-	doRegister();
+	UserCollection userCol;
+
+	doRegister(&userCol);
 }
 
-void doRegister() 
+void doRegister(UserCollection* userCol)
 {
 	RegisterUserUI regUI;
-	RegisterUser regCtrl(&regUI);
+	
+	RegisterUser regCtrl(&regUI, userCol);
 
 	regUI.signUp();
 }

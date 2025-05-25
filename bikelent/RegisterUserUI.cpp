@@ -6,7 +6,7 @@ using namespace std;
 
 void RegisterUserUI::startInterface(RegisterUser* ctrl) {
 	this->ctrl = ctrl;
-	cout << "아이디 비번 폰번" << endl;
+	cout << "1.1. 회원가입" << endl;
 }
 
 void RegisterUserUI::signup() {
@@ -16,6 +16,6 @@ void RegisterUserUI::signup() {
 	cin >> ID >> PW >> pNum;
 
 	if (ctrl->addNewMember(ID, PW, pNum)) {
-		cout << ID << " " << PW << " " << pNum << endl;
+		cout << "> " << ID << " " << PW << " " << pNum << endl;
 	}
 }

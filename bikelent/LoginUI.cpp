@@ -6,16 +6,17 @@ using namespace std;
 
 void LoginUI::startInterface(Login* ctrl) {
 	this->ctrl = ctrl;
-	cout << "아이디 비번" << endl;
+	cout << "2.1. 로그인" << endl;
 }
 
-void LoginUI::login() {
+void LoginUI::login(string& currUserID) {
 	string ID, PW;
 	int pNum = 0;
 
 	cin >> ID >> PW;
 
 	if (ctrl->checkUserInfo(ID, PW)) {
-		cout << ID << " " << PW << endl;
+		cout << "> " << ID << " " << PW << endl;
+		currUserID = ID;
 	}
 }

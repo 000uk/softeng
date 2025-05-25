@@ -9,7 +9,7 @@ void LogoutUI::startInterface(Logout* ctrl) {
 	cout << "2.2. ·Î±×¾Æ¿ô" << endl;
 }
 
-void LogoutUI::logout(string& currUserID) {
-	cout << "> " << currUserID << endl;
-	ctrl->finishSystem(currUserID);
+void LogoutUI::logout(User*& currUser) {
+	cout << "> " << currUser->getUserID() << endl;
+	ctrl->finishSystem(currUser);
 }

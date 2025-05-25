@@ -10,6 +10,6 @@ Logout::Logout(LogoutUI* ui) {
 	ui->startInterface(this);
 }
 
-void Logout::finishSystem(string& currUserID) {
-	currUserID = "";
+void Logout::finishSystem(User*& currUser) {
+	currUser = NULL;
 }

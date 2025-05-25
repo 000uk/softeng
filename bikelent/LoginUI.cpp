@@ -9,14 +9,14 @@ void LoginUI::startInterface(Login* ctrl) {
 	cout << "2.1. ·Î±×ÀÎ" << endl;
 }
 
-void LoginUI::login(string& currUserID) {
+void LoginUI::login(User*& currUser) {
 	string ID, PW;
 	int pNum = 0;
 
 	cin >> ID >> PW;
 
-	if (ctrl->checkUserInfo(ID, PW)) {
+	currUser = ctrl->checkUserInfo(ID, PW);
+	if (currUser) {
 		cout << "> " << ID << " " << PW << endl;
-		currUserID = ID;
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "BikeCollection.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ private:
 	int phoneNum;
 
 public:
-	User(string userID, string userPW, int phoneNum = 0);
+	User(string userID, string userPW, int phoneNum);
 	string getUserID();
 	string getUserPW();
+	virtual BikeCollection* getBikeCol() = 0;
 };

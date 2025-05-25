@@ -3,8 +3,6 @@
 #include "RegisterUserUI.h"
 #include "UserCollection.h"
 
-using namespace std;
-
 class RegisterUserUI;
 
 class RegisterUser

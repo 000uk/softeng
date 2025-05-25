@@ -1,9 +1,11 @@
 #pragma once
 #include <string.h>
 #include "UserCollection.h"
+#include "Manager.h"
+#include "Member.h"
 
 UserCollection::UserCollection() {
-	userList[numUsers++] = new User("admin", "admin"); // 관리자의 계정은 주어진 상태
+	userList[numUsers++] = new Manager("admin", "admin"); // 관리자의 계정은 주어진 상태
 }
 
 UserCollection::~UserCollection() {
@@ -13,7 +15,7 @@ UserCollection::~UserCollection() {
 }
 
 void UserCollection::addUser(string userID, string userPW, int phoneNum) {
-	userList[numUsers++] = new User(userID, userPW, phoneNum);
+	userList[numUsers++] = new Member(userID, userPW, phoneNum);
 }
 
 bool UserCollection::isAlreadyExist(string userID) {
@@ -25,12 +27,12 @@ bool UserCollection::isAlreadyExist(string userID) {
 	return false;
 }
 
-bool UserCollection::verifyUserInfo(string userID, string userPW) {
+User* UserCollection::verifyUserInfo(string userID, string userPW) {
 	for (int i = 0; i < numUsers; i++) {
 		if (userID == userList[i]->getUserID() &&
-			userPW == userList[i]->getUserPW()) { // enteredID? 이런식으로 이름 바꿀까 고민
-			return true;
+			userPW == userList[i]->getUserPW()) {
+			return userList[i];
 		}
 	}
-	return false;
+	return NULL;
 }

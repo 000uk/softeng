@@ -14,9 +14,9 @@
 using namespace std;
 
 void doRegister(UserCollection* userCol);
-void doLogin(UserCollection* userCol, string& currUserID);
-void doLogout(string& currUserID);
-void doAddBikeList(string currUserID, BikeCollection* bikeCol);
+void doLogin(UserCollection* userCol, User*& currUser);
+void doLogout(User*& currUser);
+void doAddBikeList(User* currUser);
 void doRentBike();
 void doViewBikeList();
 
@@ -24,13 +24,12 @@ int main()
 {
 	UserCollection userCol;
 	BikeCollection bikeCol;
-	//string currUserID = "";
-	string currUserID = "admin";
+	User* currUser = NULL;
 
-	//doRegister(&userCol);
-	//doLogin(&userCol, currUserID);
-	//doLogout(currUserID);
-	doAddBikeList(currUserID, &bikeCol);
+	doRegister(&userCol);
+	doLogin(&userCol, currUser);
+	//doLogout(currUser);
+	doAddBikeList(currUser);
 }
 
 void doRegister(UserCollection* userCol)
@@ -41,26 +40,24 @@ void doRegister(UserCollection* userCol)
 	regUI.signup();
 }
 
-void doLogin(UserCollection* userCol, string& currUserID)
+void doLogin(UserCollection* userCol, User*& currUser)
 {
 	LoginUI loginUI;
 	Login loginCtrl(&loginUI, userCol);
 
-	loginUI.login(currUserID);
+	loginUI.login(currUser);
 }
 
-void doLogout(string& currUserID) {
+void doLogout(User*& currUser) {
 	LogoutUI logoutUI;
 	Logout logoutCtrl(&logoutUI);
 
-	logoutUI.logout(currUserID);
+	logoutUI.logout(currUser);
 }
 
-void doAddBikeList(string currUserID, BikeCollection* bikeCol) {
-	if (currUserID == "admin") {
-		AddBikeUI addBikeUI;
-		AddBike addBike(&addBikeUI, bikeCol);
+void doAddBikeList(User* currUser) {
+	AddBikeUI addBikeUI;
+	AddBike addBike(&addBikeUI, currUser);
 
-		addBikeUI.createNewBike();
-	}
+	addBikeUI.createNewBike();
 }

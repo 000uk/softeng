@@ -1,9 +1,6 @@
 #pragma once
-#include <string>
 #include "LogoutUI.h"
 #include "User.h"
-
-using namespace std;
 
 class LogoutUI;
 

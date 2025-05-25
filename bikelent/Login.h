@@ -3,8 +3,6 @@
 #include "LoginUI.h"
 #include "UserCollection.h"
 
-using namespace std;
-
 class LoginUI;
 
 class Login

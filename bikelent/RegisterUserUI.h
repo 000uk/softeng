@@ -1,5 +1,4 @@
 #pragma once
-#include <string.h>
 #include "RegisterUser.h"
 
 class RegisterUser;

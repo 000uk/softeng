@@ -1,9 +1,6 @@
 #pragma once
-#include <string.h>
 #include "Login.h"
 #include "User.h"
-
-using namespace std;
 
 class Login;
 

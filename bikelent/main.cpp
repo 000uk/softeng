@@ -16,7 +16,7 @@ using namespace std;
 void doRegister(UserCollection* userCol);
 void doLogin(UserCollection* userCol, User*& currUser);
 void doLogout(User*& currUser);
-void doAddBikeList(User* currUser, BikeCollection* bikeCol);
+void doAddBikeList(User* currUser);
 void doRentBike();
 void doViewBikeList();
 
@@ -26,10 +26,10 @@ int main()
 	BikeCollection bikeCol;
 	User* currUser = NULL;
 
-	//doRegister(&userCol);
+	doRegister(&userCol);
 	doLogin(&userCol, currUser);
 	//doLogout(currUser);
-	doAddBikeList(currUser, &bikeCol);
+	doAddBikeList(currUser);
 }
 
 void doRegister(UserCollection* userCol)
@@ -55,11 +55,9 @@ void doLogout(User*& currUser) {
 	logoutUI.logout(currUser);
 }
 
-void doAddBikeList(User* currUser, BikeCollection* bikeCol) {
-	if (currUser->getUserID() == "admin") {
-		AddBikeUI addBikeUI;
-		AddBike addBike(&addBikeUI, bikeCol);
+void doAddBikeList(User* currUser) {
+	AddBikeUI addBikeUI;
+	AddBike addBike(&addBikeUI, currUser);
 
-		addBikeUI.createNewBike();
-	}
+	addBikeUI.createNewBike();
 }

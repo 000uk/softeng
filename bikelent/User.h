@@ -12,5 +12,6 @@ private:
 
 public:
 	User(string userID, string userPW, int phoneNum);
-	string getUserInfo();
+	string getUserID();
+	string getUserPW();
 };

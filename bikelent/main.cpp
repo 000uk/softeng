@@ -11,7 +11,7 @@
 using namespace std;
 
 void doRegister(UserCollection* userCol);
-void doLogin();
+void doLogin(UserCollection* userCol);
 void doLogout();
 void doRentBike();
 void doViewBikeList();
@@ -31,13 +31,13 @@ void doRegister(UserCollection* userCol)
 	RegisterUserUI regUI;
 	RegisterUser regCtrl(&regUI, userCol);
 
-	regUI.signUp();
+	regUI.signup();
 }
 
 void doLogin(UserCollection* userCol)
 {
 	LoginUI loginUI;
-	Login logInCtrl(&loginUI, userCol);
+	Login loginCtrl(&loginUI, userCol);
 
 	loginUI.login();
 }

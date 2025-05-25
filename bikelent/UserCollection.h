@@ -12,6 +12,7 @@ private:
 public:
 	UserCollection();
 	~UserCollection();
-	bool isNewUser(string userID);
+	bool isAlreadyExist(string userID);
+	bool verifyUserInfo(string userID, string userPW);
 	void addUser(string userID, string userPW, int phoneNum);
 };

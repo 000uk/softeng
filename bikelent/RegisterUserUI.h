@@ -10,5 +10,5 @@ private:
 	RegisterUser* ctrl;
 public:
 	void startInterface(RegisterUser* ctrl);
-	void signUp();
+	void signup();
 };

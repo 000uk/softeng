@@ -9,7 +9,7 @@ void RegisterUserUI::startInterface(RegisterUser* ctrl) {
 	cout << "아이디 비번 폰번" << endl;
 }
 
-void RegisterUserUI::signUp() {
+void RegisterUserUI::signup() {
 	string ID, PW;
 	int pNum = 0;
 

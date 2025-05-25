@@ -9,6 +9,10 @@ User::User(string userID, string userPW, int phoneNum) {
 	this->phoneNum = phoneNum;
 }
 
-string User::getUserInfo() {
+string User::getUserID() {
 	return userID;
+}
+
+string User::getUserPW() {
+	return userPW;
 }

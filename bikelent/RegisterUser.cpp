@@ -12,7 +12,7 @@ RegisterUser::RegisterUser(RegisterUserUI* ui, UserCollection* userCol) {
 }
 
 bool RegisterUser::addNewMember(string userID, string userPW, int phoneNum) {
-	if (userCol->isNewUser(userID)) {
+	if (!userCol->isAlreadyExist(userID)) {
 		userCol->addUser(userID, userPW, phoneNum);
 		return true;
 	}

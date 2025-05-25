@@ -2,8 +2,7 @@
 #include <string>
 #include "AddBikeUI.h"
 #include "BikeCollection.h"
-
-using namespace std;
+#include "User.h"
 
 class AddBikeUI;
 
@@ -14,6 +13,6 @@ private:
 	BikeCollection* bikeCol;
 
 public:
-	AddBike(AddBikeUI* ui, BikeCollection* BikeCol);
+	AddBike(AddBikeUI* ui, User* currUser);
 	bool addNewBike(string bikeID, string bikeName);
 };

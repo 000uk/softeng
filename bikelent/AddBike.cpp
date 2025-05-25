@@ -4,9 +4,9 @@
 
 using namespace std;
 
-AddBike::AddBike(AddBikeUI* ui, BikeCollection* bikeCol) {
+AddBike::AddBike(AddBikeUI* ui, User* currUser) {
 	this->ui = ui;
-	this->bikeCol = bikeCol;
+	this->bikeCol = currUser->getBikeCol();
 
 	ui->startInterface(this);
 }

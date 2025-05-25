@@ -4,7 +4,7 @@
 
 using namespace std;
 
-AddBike::AddBike(AddBikeUI* ui, BikeCollection* userCol) {
+AddBike::AddBike(AddBikeUI* ui, BikeCollection* bikeCol) {
 	this->ui = ui;
 	this->bikeCol = bikeCol;
 

@@ -1,35 +1,36 @@
 #include <iostream>
 #include <string.h>
-#include "UserCollection.h"
 #include "RegisterUser.h"
 #include "RegisterUserUI.h"
 #include "Login.h"
 #include "LoginUI.h"
 #include "Logout.h"
 #include "LogoutUI.h"
-
 #include "AddBike.h"
 #include "AddBikeUI.h"
+#include "UserCollection.h"
+#include "BikeCollection.h"
 
 using namespace std;
 
 void doRegister(UserCollection* userCol);
 void doLogin(UserCollection* userCol, string& currUserID);
 void doLogout(string& currUserID);
-void doAddBikeList(string currUserID);
+void doAddBikeList(string currUserID, BikeCollection* bikeCol);
 void doRentBike();
 void doViewBikeList();
 
 int main()
 {
 	UserCollection userCol;
-	string currUserID = "";
+	BikeCollection bikeCol;
+	//string currUserID = "";
+	string currUserID = "admin";
 
-	doRegister(&userCol);
-	doLogin(&userCol, currUserID);
-	doLogout(currUserID);
-
-	doAddBikeList(currUserID);
+	//doRegister(&userCol);
+	//doLogin(&userCol, currUserID);
+	//doLogout(currUserID);
+	doAddBikeList(currUserID, &bikeCol);
 }
 
 void doRegister(UserCollection* userCol)
@@ -55,11 +56,11 @@ void doLogout(string& currUserID) {
 	logoutUI.logout(currUserID);
 }
 
-void doAddBikeList(string currUserID) {
-	if (currUserID != "admin") {
+void doAddBikeList(string currUserID, BikeCollection* bikeCol) {
+	if (currUserID == "admin") {
 		AddBikeUI addBikeUI;
-		AddBike addBike(&addBikeUI);
+		AddBike addBike(&addBikeUI, bikeCol);
 
-		addBike.createNewBike();
+		addBikeUI.createNewBike();
 	}
 }

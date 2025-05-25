@@ -15,3 +15,11 @@ string Bike::getBikeID() {
 string Bike::getBikeName() {
 	return bikeName;
 }
+
+bool Bike::getStatus() {
+	return status;
+}
+
+void Bike::setStatus() {
+	status = !status;
+}

@@ -8,15 +8,24 @@ BikeCollection::~BikeCollection() {
 	}
 }
 
-void BikeCollection::addBike(string bikeID, string bikeName) {
-	bikeList[numBikes++] = new Bike(bikeID, bikeName);
-}
-
-bool BikeCollection::isAlreadyExist(string bikeID) {
+bool BikeCollection::isExist(string bikeID) {
 	for (int i = 0; i < numBikes; i++) {
 		if (bikeID == bikeList[i]->getBikeID()) {
 			return true;
 		}
 	}
 	return false;
+}
+
+bool BikeCollection::isRented(string bikeID) {
+	for (int i = 0; i < numBikes; i++) {
+		if (bikeID == bikeList[i]->getBikeID()) {
+			return bikeList[i]->getStatus();
+		}
+	}
+	return false;
+}
+
+void BikeCollection::addBike(string bikeID, string bikeName) {
+	bikeList[numBikes++] = new Bike(bikeID, bikeName);
 }

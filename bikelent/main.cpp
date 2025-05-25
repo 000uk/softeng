@@ -8,14 +8,17 @@
 #include "Logout.h"
 #include "LogoutUI.h"
 
+#include "AddBike.h"
+#include "AddBikeUI.h"
+
 using namespace std;
 
 void doRegister(UserCollection* userCol);
 void doLogin(UserCollection* userCol, string& currUserID);
 void doLogout(string& currUserID);
+void doAddBikeList(string currUserID);
 void doRentBike();
 void doViewBikeList();
-void doAddBikeList();
 
 int main()
 {
@@ -23,10 +26,10 @@ int main()
 	string currUserID = "";
 
 	doRegister(&userCol);
-
 	doLogin(&userCol, currUserID);
-
 	doLogout(currUserID);
+
+	doAddBikeList(currUserID);
 }
 
 void doRegister(UserCollection* userCol)
@@ -50,4 +53,13 @@ void doLogout(string& currUserID) {
 	Logout logoutCtrl(&logoutUI);
 
 	logoutUI.logout(currUserID);
+}
+
+void doAddBikeList(string currUserID) {
+	if (currUserID != "admin") {
+		AddBikeUI addBikeUI;
+		AddBike addBike(&addBikeUI);
+
+		addBike.createNewBike();
+	}
 }

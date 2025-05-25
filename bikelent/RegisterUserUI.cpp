@@ -10,12 +10,12 @@ void RegisterUserUI::startInterface(RegisterUser* ctrl) {
 }
 
 void RegisterUserUI::signup() {
-	string ID, PW;
+	string id, pw;
 	int pNum = 0;
 
-	cin >> ID >> PW >> pNum;
+	cin >> id >> pw >> pNum;
 
-	if (ctrl->addNewMember(ID, PW, pNum)) {
-		cout << "> " << ID << " " << PW << " " << pNum << endl;
+	if (ctrl->addNewMember(id, pw, pNum)) {
+		cout << "> " << id << " " << pw << " " << pNum << endl;
 	}
 }

@@ -3,10 +3,7 @@
 #include "UserCollection.h"
 
 UserCollection::UserCollection() {
-	string ID = "admin";
-	string PW = "admin";
-
-	userList[numUsers++] = new Manager(ID, PW, 0);
+	userList[numUsers++] = new User("admin", "admin"); // 관리자의 계정은 주어진 상태
 }
 
 UserCollection::~UserCollection() {
@@ -16,7 +13,7 @@ UserCollection::~UserCollection() {
 }
 
 void UserCollection::addUser(string userID, string userPW, int phoneNum) {
-	userList[numUsers++] = new Member(userID, userPW, phoneNum);
+	userList[numUsers++] = new User(userID, userPW, phoneNum);
 }
 
 bool UserCollection::isAlreadyExist(string userID) {

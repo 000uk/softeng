@@ -1,8 +1,6 @@
 #pragma once
 #include <string.h>
 #include "User.h"
-#include "Member.h"
-#include "Manager.h"
 
 class UserCollection {
 private:

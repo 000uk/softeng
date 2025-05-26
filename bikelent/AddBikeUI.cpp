@@ -2,12 +2,10 @@
 #include <string>
 #include "AddBikeUI.h"
 
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
-
 using namespace std;
-extern ofstream out_fp;
-extern ifstream in_fp;
+
+AddBikeUI::AddBikeUI(ifstream& in_fp, ofstream& out_fp)
+	:in_fp(in_fp), out_fp(out_fp) {}
 
 /*
 시작 인터페이스: 자전거 등록 메뉴 시작을 알리고, 컨트롤러 객체를 연결한다.

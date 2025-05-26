@@ -12,6 +12,8 @@
 #include "RentBikeUI.h"
 #include "ViewBike.h"
 #include "ViewBikeUI.h"
+#include "ExitSystem.h"
+#include "ExitSystemUI.h"
 #include "UserCollection.h"
 #include "BikeCollection.h"
 
@@ -21,32 +23,30 @@
 
 using namespace std;
 
-// 파일 입출력을 위한 초기화
-ofstream out_fp;
-ifstream in_fp;
-UserCollection userCol;
-User* currUser = NULL; // 현재 접속중인 유저
-
-
-/*
-1. 전체 자전거에 대한 정보를 가져오기 위해 먼저 관리자에 대한 정보를 가져온다.
-2. 관리자가 가진 전체 자전거 정보를 받아온다.
-*/
-User* admin = userCol.verifyUserInfo("admin", "admin");
-BikeCollection* bikeCol = admin->getBikeCol();
-
-void doTask(); // 전방선언
+void doTask(User* currUser, BikeCollection* bikeCol, UserCollection& userCol, ifstream& in_fp, ofstream& out_fp); // 전방선언
 
 int main()
 {
-    in_fp.open(INPUT_FILE_NAME);
-	out_fp.open(OUTPUT_FILE_NAME);
+    // 파일 입출력을 위한 초기화
+    ofstream out_fp;
+    ifstream in_fp;
 
-    doTask();
+    in_fp.open(INPUT_FILE_NAME);
+    out_fp.open(OUTPUT_FILE_NAME);
+
+    /*
+    1. 전체 자전거에 대한 정보를 가져오기 위해 먼저 관리자에 대한 정보를 가져온다.
+    2. 관리자가 가진 전체 자전거 정보를 받아온다.
+    */
+    UserCollection userCol;
+    User* admin = userCol.verifyUserInfo("admin", "admin");
+    BikeCollection* bikeCol = admin->getBikeCol();
+    User* currUser = NULL; // 현재 접속중인 유저
+
+    doTask(currUser, bikeCol, userCol, in_fp, out_fp);
 }
 
-
-void doTask()
+void doTask(User* currUser, BikeCollection* bikeCol, UserCollection& userCol, ifstream& in_fp, ofstream& out_fp)
 {
     // 메뉴 파싱을 위한 level 구분을 위한 변수
     int menu_level_1 = 0, menu_level_2 = 0;
@@ -62,7 +62,7 @@ void doTask()
         case 1:
             switch (menu_level_2) {
             case 1: { // 1.1. 회원가입
-                RegisterUserUI regUI;
+                RegisterUserUI regUI(in_fp, out_fp);
                 RegisterUser regCtrl(&regUI, &userCol);
                 regUI.signup();
                 break;
@@ -72,13 +72,13 @@ void doTask()
         case 2:
             switch (menu_level_2) {
             case 1: {// 2.1. 로그인
-                LoginUI loginUI;
+                LoginUI loginUI(in_fp, out_fp);
                 Login loginCtrl(&loginUI, &userCol);
                 loginUI.login(currUser);
                break;
             }
             case 2: {// 2.2. 로그아웃
-                LogoutUI logoutUI;
+                LogoutUI logoutUI(in_fp, out_fp);
                 Logout logoutCtrl(&logoutUI);
                logoutUI.logout(currUser);
                break;
@@ -88,7 +88,7 @@ void doTask()
         case 3:
             switch (menu_level_2) {
             case 1: { // 3.1. 자전거 등록
-                AddBikeUI addBikeUI;
+                AddBikeUI addBikeUI(in_fp, out_fp);
                 AddBike addBike(&addBikeUI, currUser);
                 addBikeUI.createNewBike();
                 break;
@@ -98,7 +98,7 @@ void doTask()
         case 4:
             switch (menu_level_2) {
             case 1: { // 4.1. 자전거 대여
-                RentBikeUI rentBikeUI;
+                RentBikeUI rentBikeUI(in_fp, out_fp);
                 RentBike rentBike(&rentBikeUI, currUser, bikeCol);
                 rentBikeUI.selectBike();
                 break;
@@ -108,7 +108,7 @@ void doTask()
         case 5:
             switch (menu_level_2) {
             case 1: { // 5.1. 자전거 대여 리스트
-                ViewBikeUI viewBikeUI;
+                ViewBikeUI viewBikeUI(in_fp, out_fp);
                 ViewBike viewBike(&viewBikeUI, currUser);
                 viewBikeUI.viewHistory();
                 break;
@@ -118,8 +118,9 @@ void doTask()
         case 6:
             switch (menu_level_2) {
             case 1: { // 6.1. 시스템 종료
-                is_program_exit = 1;
-                out_fp << "6.1. 종료";
+                ExitSystemUI exitUI(in_fp, out_fp);
+                ExitSystem exitSystem(&exitUI);
+                exitUI.shutdown(is_program_exit);
                 break;
             }
             } break;

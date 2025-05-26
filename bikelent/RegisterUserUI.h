@@ -1,5 +1,8 @@
 #pragma once
+#include <fstream>
 #include "RegisterUser.h"
+
+using namespace std;
 
 class RegisterUser;
 
@@ -7,8 +10,12 @@ class RegisterUser;
 class RegisterUserUI
 {
 private:
-	RegisterUser* ctrl; // 컨트롤러
+	ifstream& in_fp;
+	ofstream& out_fp;
+	RegisterUser* ctrl = NULL; // 컨트롤러
+
 public:
+	RegisterUserUI(ifstream& in_fp, ofstream& out_fp);
 	void startInterface(RegisterUser* ctrl);
 	void signup();
 };

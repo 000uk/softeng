@@ -12,5 +12,5 @@ private:
 
 public:
 	Logout(LogoutUI* ui);
-	void finishSystem(User*& currUser);
+	void finishAccess(User*& currUser);
 };

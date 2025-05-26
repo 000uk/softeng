@@ -1,6 +1,9 @@
 #pragma once
+#include <fstream>
 #include "Logout.h"
 #include "User.h"
+
+using namespace std;
 
 class Logout;
 
@@ -8,8 +11,12 @@ class Logout;
 class LogoutUI
 {
 private:
-	Logout* ctrl; // 컨트롤러
+	ifstream& in_fp;
+	ofstream& out_fp;
+	Logout* ctrl = NULL; // 컨트롤러
+
 public:
+	LogoutUI(ifstream& in_fp, ofstream& out_fp);
 	void startInterface(Logout* ctrl);
 	void logout(User*& currUser);
 };

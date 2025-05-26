@@ -1,6 +1,9 @@
 #pragma once
+#include <fstream>
 #include <string.h>
 #include "AddBike.h"
+
+using namespace std;
 
 class AddBike;
 
@@ -8,8 +11,12 @@ class AddBike;
 class AddBikeUI
 {
 private:
-	AddBike* ctrl; // 컨트롤러
+	ifstream& in_fp;
+	ofstream& out_fp;
+	AddBike* ctrl = NULL; // 컨트롤러
+
 public:
+	AddBikeUI(ifstream& in_fp, ofstream& out_fp);
 	void startInterface(AddBike* ctrl);
 	void createNewBike();
 };

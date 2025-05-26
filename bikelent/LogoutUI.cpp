@@ -2,12 +2,10 @@
 #include <string>
 #include "LogoutUI.h"
 
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
-
 using namespace std;
-extern ofstream out_fp;
-extern ifstream in_fp;
+
+LogoutUI::LogoutUI(ifstream& in_fp, ofstream& out_fp)
+	:in_fp(in_fp), out_fp(out_fp) {}
 
 /*
 로그아웃 인터페이스 시작
@@ -24,5 +22,5 @@ void LogoutUI::startInterface(Logout* ctrl) {
 void LogoutUI::logout(User*& currUser) {
 	out_fp << "> " << currUser->getUserID() << "\n\n";
 	// 현재 로그인된 사용자의 포인터를 참조로 넘겨 로그아웃 진행
-	ctrl->finishSystem(currUser);
+	ctrl->finishAccess(currUser);
 }

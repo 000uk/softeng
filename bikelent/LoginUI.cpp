@@ -2,12 +2,12 @@
 #include <string>
 #include "LoginUI.h"
 
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
+#include <iostream>
 
 using namespace std;
-extern ofstream out_fp;
-extern ifstream in_fp;
+
+LoginUI::LoginUI(ifstream& in_fp, ofstream& out_fp)
+	:in_fp(in_fp), out_fp(out_fp) {}
 
 /*
 로그인 인터페이스 시작

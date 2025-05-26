@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 void RentBikeUI::startInterface(RentBike* ctrl) {
 	this->ctrl = ctrl;
 	cout << "4.1. 자전거 대여" << endl;

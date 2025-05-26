@@ -4,7 +4,6 @@
 RentBike::RentBike(RentBikeUI* ui, User* currUser, BikeCollection* bikeCol) {
 	this->ui = ui;
 	this->bikeCol = bikeCol;
-	bikeCol->tryGetBikePtr("11");
 	this->rentedBikeCol = currUser->getRentedBikeCol();
 
 	ui->startInterface(this);

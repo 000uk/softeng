@@ -8,13 +8,13 @@ BikeCollection::~BikeCollection() {
 	}
 }
 
-bool BikeCollection::isExist(string bikeID) {
+Bike* BikeCollection::tryGetBikePtr(string bikeID) {
 	for (int i = 0; i < numBikes; i++) {
 		if (bikeID == bikeList[i]->getBikeID()) {
-			return true;
+			return bikeList[i];
 		}
 	}
-	return false;
+	return NULL;
 }
 
 bool BikeCollection::isRented(string bikeID) {

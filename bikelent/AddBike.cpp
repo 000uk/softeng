@@ -1,8 +1,5 @@
-#include <iostream>
 #include <string>
 #include "AddBike.h"
-
-using namespace std;
 
 AddBike::AddBike(AddBikeUI* ui, User* currUser) {
 	this->ui = ui;
@@ -12,7 +9,7 @@ AddBike::AddBike(AddBikeUI* ui, User* currUser) {
 }
 
 bool AddBike::addNewBike(string bikeID, string bikeName) {
-	if (!bikeCol->isExist(bikeID)) {
+	if (!bikeCol->tryGetBikePtr(bikeID)) {
 		bikeCol->addBike(bikeID, bikeName);
 		return true;
 	}

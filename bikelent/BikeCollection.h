@@ -9,7 +9,7 @@ private:
 
 public:
 	~BikeCollection();
-	bool isExist(string bikeID);
+	Bike* tryGetBikePtr(string bikeID);
 	bool isRented(string bikeID);
 	void addBike(string bikeID, string bikeName);
 };

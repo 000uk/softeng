@@ -1,7 +1,6 @@
 #pragma once
 #include <string.h>
 #include "User.h"
-#include "BikeCollection.h"
 
 class Manager : public User
 {
@@ -12,4 +11,5 @@ public:
 	Manager(string userID, string userPW, int phoneNum = 0);
 	~Manager();
 	virtual BikeCollection* getBikeCol();
+	virtual RentedBikeCollection* getRentedBikeCol();
 };

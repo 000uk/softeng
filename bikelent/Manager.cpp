@@ -15,3 +15,7 @@ Manager::~Manager() {
 BikeCollection* Manager::getBikeCol() {
 	return bikeCol;
 }
+
+RentedBikeCollection* Manager::getRentedBikeCol() {
+	return NULL;
+}

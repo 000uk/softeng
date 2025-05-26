@@ -17,4 +17,5 @@ public:
 	string getUserID();
 	string getUserPW();
 	virtual BikeCollection* getBikeCol() = 0;
+	virtual RentedBikeCollection* getRentedBikeCol() = 0;
 };

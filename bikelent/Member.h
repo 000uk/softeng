@@ -5,8 +5,11 @@
 class Member : public User
 {
 private:
-	
+	RentedBikeCollection* rentedBikeCol;
+
 public:
 	Member(string userID, string userPW, int phoneNum = 0);
-	BikeCollection* getBikeCol();
+	~Member();
+	virtual BikeCollection* getBikeCol();
+	virtual RentedBikeCollection* getRentedBikeCol();
 };

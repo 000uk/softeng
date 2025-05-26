@@ -8,6 +8,8 @@
 #include "LogoutUI.h"
 #include "AddBike.h"
 #include "AddBikeUI.h"
+#include "RentBike.h"
+#include "RentBikeUI.h"
 #include "UserCollection.h"
 #include "BikeCollection.h"
 
@@ -17,19 +19,26 @@ void doRegister(UserCollection* userCol);
 void doLogin(UserCollection* userCol, User*& currUser);
 void doLogout(User*& currUser);
 void doAddBikeList(User* currUser);
-void doRentBike();
+void doRentBike(User* currUser, BikeCollection* bikeCol);
 void doViewBikeList();
 
 int main()
 {
 	UserCollection userCol;
-	BikeCollection bikeCol;
-	User* currUser = NULL;
+	User* currUser = NULL; // 현재 접속중인 유저
 
+	User* admin = userCol.verifyUserInfo("admin", "admin");
+	BikeCollection* bikeCol = admin->getBikeCol();
+
+	// admin
+	doLogin(&userCol, currUser);
+	doAddBikeList(currUser);
+	doLogout(currUser);
+
+	// user
 	doRegister(&userCol);
 	doLogin(&userCol, currUser);
-	//doLogout(currUser);
-	doAddBikeList(currUser);
+	doRentBike(currUser, bikeCol);
 }
 
 void doRegister(UserCollection* userCol)
@@ -60,4 +69,11 @@ void doAddBikeList(User* currUser) {
 	AddBike addBike(&addBikeUI, currUser);
 
 	addBikeUI.createNewBike();
+}
+
+void doRentBike(User* currUser, BikeCollection* bikeCol) {
+	RentBikeUI rentBikeUI;
+	RentBike rentBike(&rentBikeUI, currUser, bikeCol);
+
+	rentBikeUI.selectBike();
 }

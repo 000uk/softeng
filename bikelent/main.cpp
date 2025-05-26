@@ -1,4 +1,3 @@
-#include <iostream>
 #include <fstream>
 #include <string.h>
 #include "RegisterUser.h"
@@ -21,28 +20,26 @@
 #define OUTPUT_FILE_NAME "output.txt"
 
 using namespace std;
+
+// 파일 입출력을 위한 초기화
 ofstream out_fp;
 ifstream in_fp;
 UserCollection userCol;
 User* currUser = NULL; // 현재 접속중인 유저
+
+
+/*
+1. 전체 자전거에 대한 정보를 가져오기 위해 먼저 관리자에 대한 정보를 가져온다.
+2. 관리자가 가진 전체 자전거 정보를 받아온다.
+*/
 User* admin = userCol.verifyUserInfo("admin", "admin");
 BikeCollection* bikeCol = admin->getBikeCol();
 
-/*
-void doRegister(UserCollection* userCol);
-void doLogin(UserCollection* userCol, User*& currUser);
-void doLogout(User*& currUser);
-void doAddBikeList(User* currUser);
-void doRentBike(User* currUser, BikeCollection* bikeCol);
-void doViewBikeList(User* currUser);
-*/
-
-void doTask();
+void doTask(); // 전방선언
 
 int main()
 {
-	// 파일 입출력을 위한 초기화
-	in_fp.open(INPUT_FILE_NAME);
+    in_fp.open(INPUT_FILE_NAME);
 	out_fp.open(OUTPUT_FILE_NAME);
 
     doTask();
@@ -60,18 +57,17 @@ void doTask()
         // 입력파일에서 메뉴 숫자 2개를 읽기
         in_fp >> menu_level_1 >> menu_level_2;
 
-
         // 메뉴 구분 및 해당 연산 수행
         switch (menu_level_1) {
         case 1:
             switch (menu_level_2) {
-            case 1: // 1.1. 회원가입
-                RegisterUserUI regUI(); // ifstream& in_fp, ofstream& out_fp 일케 넘겨줄까?
+            case 1: { // 1.1. 회원가입
+                RegisterUserUI regUI;
                 RegisterUser regCtrl(&regUI, &userCol);
                 regUI.signup();
                 break;
             }
-            break;
+            } break;
 
         case 2:
             switch (menu_level_2) {
@@ -79,17 +75,16 @@ void doTask()
                 LoginUI loginUI;
                 Login loginCtrl(&loginUI, &userCol);
                 loginUI.login(currUser);
-                break;
+               break;
             }
             case 2: {// 2.2. 로그아웃
                 LogoutUI logoutUI;
                 Logout logoutCtrl(&logoutUI);
-                logoutUI.logout(currUser);
-                break;
+               logoutUI.logout(currUser);
+               break;
             }
-            }
-            break;
-
+            } break;
+            
         case 3:
             switch (menu_level_2) {
             case 1: { // 3.1. 자전거 등록
@@ -98,8 +93,7 @@ void doTask()
                 addBikeUI.createNewBike();
                 break;
             }
-            }
-            break;
+            } break;
 
         case 4:
             switch (menu_level_2) {
@@ -109,8 +103,7 @@ void doTask()
                 rentBikeUI.selectBike();
                 break;
             }
-            }
-            break;
+            } break;
 
         case 5:
             switch (menu_level_2) {
@@ -120,63 +113,16 @@ void doTask()
                 viewBikeUI.viewHistory();
                 break;
             }
-            }
-            break;
+            } break;
 
         case 6:
             switch (menu_level_2) {
             case 1: { // 6.1. 시스템 종료
                 is_program_exit = 1;
+                out_fp << "6.1. 종료";
                 break;
             }
-            }
-            break;
+            } break;
         }
     }
 }
-
-/*
-void doRegister(UserCollection* userCol)
-{
-	RegisterUserUI regUI;
-	RegisterUser regCtrl(&regUI, userCol);
-
-	regUI.signup();
-}
-
-void doLogin(UserCollection* userCol, User*& currUser)
-{
-	LoginUI loginUI;
-	Login loginCtrl(&loginUI, userCol);
-
-	loginUI.login(currUser);
-}
-
-void doLogout(User*& currUser) {
-	LogoutUI logoutUI;
-	Logout logoutCtrl(&logoutUI);
-
-	logoutUI.logout(currUser);
-}
-
-void doAddBikeList(User* currUser) {
-	AddBikeUI addBikeUI;
-	AddBike addBike(&addBikeUI, currUser);
-
-	addBikeUI.createNewBike();
-}
-
-void doRentBike(User* currUser, BikeCollection* bikeCol) {
-	RentBikeUI rentBikeUI;
-	RentBike rentBike(&rentBikeUI, currUser, bikeCol);
-
-	rentBikeUI.selectBike();
-}
-
-void doViewBikeList(User* currUser) {
-	ViewBikeUI viewBikeUI;
-	ViewBike viewBike(&viewBikeUI, currUser);
-
-	viewBikeUI.viewHistory();
-}
-*/

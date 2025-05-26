@@ -10,6 +10,8 @@
 #include "AddBikeUI.h"
 #include "RentBike.h"
 #include "RentBikeUI.h"
+#include "ViewBike.h"
+#include "ViewBikeUI.h"
 #include "UserCollection.h"
 #include "BikeCollection.h"
 
@@ -20,7 +22,7 @@ void doLogin(UserCollection* userCol, User*& currUser);
 void doLogout(User*& currUser);
 void doAddBikeList(User* currUser);
 void doRentBike(User* currUser, BikeCollection* bikeCol);
-void doViewBikeList();
+void doViewBikeList(User* currUser);
 
 int main()
 {
@@ -39,6 +41,7 @@ int main()
 	doRegister(&userCol);
 	doLogin(&userCol, currUser);
 	doRentBike(currUser, bikeCol);
+	doViewBikeList(currUser);
 }
 
 void doRegister(UserCollection* userCol)
@@ -76,4 +79,11 @@ void doRentBike(User* currUser, BikeCollection* bikeCol) {
 	RentBike rentBike(&rentBikeUI, currUser, bikeCol);
 
 	rentBikeUI.selectBike();
+}
+
+void doViewBikeList(User* currUser) {
+	ViewBikeUI viewBikeUI;
+	ViewBike viewBike(&viewBikeUI, currUser);
+
+	viewBikeUI.viewHistory();
 }

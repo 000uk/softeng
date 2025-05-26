@@ -1,21 +1,27 @@
-#include <iostream>
+#include <fstream>
 #include <string>
 #include "RegisterUserUI.h"
+
+#define INPUT_FILE_NAME "input.txt"
+#define OUTPUT_FILE_NAME "output.txt"
 
 using namespace std;
 
 void RegisterUserUI::startInterface(RegisterUser* ctrl) {
+	in_fp.open(INPUT_FILE_NAME);
+	out_fp.open(OUTPUT_FILE_NAME);
+
 	this->ctrl = ctrl;
-	cout << "1.1. 회원가입" << endl;
+	out_fp << "1.1. 회원가입\n";
 }
 
 void RegisterUserUI::signup() {
 	string id, pw;
 	int pNum = 0;
 
-	cin >> id >> pw >> pNum;
+	in_fp >> id >> pw >> pNum;
 
 	if (ctrl->addNewMember(id, pw, pNum)) {
-		cout << "> " << id << " " << pw << " " << pNum << endl;
+		out_fp << "> " << id << " " << pw << " " << pNum << "\n";
 	}
 }
